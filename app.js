@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //the shapes
-const lTetrominoe =[
+const lTetromino =[
     [1, width+1, width*2+1, 2],
     [width, width+1, width+2, width*2+2],
     [1, width+1,width*2+1, width*2],
@@ -49,5 +49,7 @@ const iTetromino = [
 
 
 ]
+
+const theTetrominoes = [iTetromino,oTetromino,tTetromino, zTetromino,lTetromino]
 
 })
