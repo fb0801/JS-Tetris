@@ -78,6 +78,29 @@ function undraw(){
 }
 
 
+//make tetro move down the page
+timerID == setInterval(moveDown, 1000)
+
+//move dwn func
+function moveDown(){
+    undraw()//removes the shape
+    currentPosition +=width
+    draw()//draws the shape
+    freeze()
+}
+
+//freeze func
+function freeze(){
+    if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))){
+        current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+        //start a new tetro
+        random = Math.floor(Math.random()* theTetrominoes.length)
+        current = theTetrominoes[random][currentRotation]
+        current = 4
+        draw()
+    }
+}
+
 
 
 
