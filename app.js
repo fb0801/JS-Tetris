@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const width= 10
     let nextRandom = 0
     let timerId 
+    let score = 0
+
+
 
 //the shapes
 const lTetromino =[
@@ -117,6 +120,7 @@ function freeze(){
         current = 4
         draw()
         displayShape()
+        addScore()
     }
 }
 
@@ -213,7 +217,24 @@ startBtn.addEventListener('click', () => {
 
 
 
+//add score
+function addScore(){
+    for(let i =0;i<199;i+=width){
+        const row =[i,i+1,i+2,i+3,i+4, i+5,i+6,i+7,i+8,i+9]
 
+        if(row.every(index => squares[index].classList.contains('taken'))){
+            score+=10
+            scoreDisplay.innerHTML =score
+            row.foreach(index => {
+                squares[index.classList.remove('taken')]
+                squares[index].classList.remove('tetromino')
+            })
+            const squaresRemoved = squares.splice(i,width)
+            squares = squaresRemoved.concat(squares)
+            squares.foreach(cell => grid.appendChild(cell))
+        }
+    }
+}
 
 
 
