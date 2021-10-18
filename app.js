@@ -81,6 +81,23 @@ function undraw(){
 //make tetro move down the page
 timerID == setInterval(moveDown, 1000)
 
+
+
+//assign func to key
+function control(e){
+    if(e.keycode ==37){
+        moveLeft()
+    } else if (e.keycode ===38){
+        //
+    } else if(e.keycode ===39){
+        moveRight()
+    }else if(e.keycode ===40){
+        moveDown
+    }
+}
+document.addEventListener('keyup', control)
+
+
 //move dwn func
 function moveDown(){
     undraw()//removes the shape
@@ -115,5 +132,21 @@ function moveLeft(){
 draw()
 }
 
+
+
+//move tetro right
+function moveRight(){
+    undraw()
+    const isAtRightEdge = current.some(index =>(currentPosition + index) % width === width - 1)
+
+
+    if(!isAtRightEdge) currentPosition +=1
+
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+        currentPosition -=1
+
+    }
+    draw()
+}
 
 })
