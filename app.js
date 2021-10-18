@@ -52,4 +52,35 @@ const iTetromino = [
 
 const theTetrominoes = [iTetromino,oTetromino,tTetromino, zTetromino,lTetromino]
 
+
+let currentPosition = 4
+let currentRotation = 0
+
+//randomly select a tetro and rotate
+let random = (Math.random()*theTetrominoes.length)
+
+
+let current = theTetrominoes[random][currentRotation]
+
+
+//draw the tetro
+function draw(){
+    current.forEach(index => {
+        squares[currentPosition + index].classList.add('tetromino')
+    })
+}
+
+//undraw the tetro
+function undraw(){
+    current.forEach(index =>{
+        squares[currentPosition + index].classList.remove('tetromino')
+    })
+}
+
+
+
+
+
+
+
 })
