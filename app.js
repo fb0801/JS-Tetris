@@ -88,7 +88,7 @@ function control(e){
     if(e.keycode ==37){
         moveLeft()
     } else if (e.keycode ===38){
-        //
+        rotate()
     } else if(e.keycode ===39){
         moveRight()
     }else if(e.keycode ===40){
@@ -148,5 +148,20 @@ function moveRight(){
     }
     draw()
 }
+
+
+//rotate the tetro
+function rotate(){
+    undraw()
+    currentRotation ++
+
+    if (currentRotation === current.length){
+        //if the shape is 4 goes back to 0
+        currentRotation = 0
+    }
+    current = theTetrominoes[random][currentRotation]
+    draw()
+}
+
 
 })
